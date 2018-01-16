@@ -21,14 +21,18 @@ namespace InventoryManagement.Controllers
             string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             string newString =  new string(Enumerable.Repeat(chars, 15)
               .Select(s => s[random.Next(s.Length)]).ToArray());
-            _context.Employee.Add(new Employee
+
+            Employee employee = new Employee
             {
                 City = newString,
                 Department = newString,
                 Name = newString,
                 Salary = DateTime.UtcNow.Millisecond
-            });
-            await _context.SaveChangesAsync();
+            };
+
+            _context.Employies.Add(employee);
+            _context.SaveChanges();
+
             return View();
         }
 
