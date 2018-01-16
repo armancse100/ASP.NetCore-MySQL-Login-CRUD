@@ -1,17 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using InventoryManagement.Models;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace InventoryManagement.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        InventoryManagementDbContext _context;
+        public HomeController(InventoryManagementDbContext context)
         {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            Random random = new Random();
+            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            string newString =  new string(Enumerable.Repeat(chars, 15)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+            _context.Employee.Add(new Employee
+            {
+                City = newString,
+                Department = newString,
+                Name = newString,
+                Salary = DateTime.UtcNow.Millisecond
+            });
+            await _context.SaveChangesAsync();
             return View();
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InventoryManagement.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 
 public class InventoryManagementDbContext : DbContext
@@ -18,4 +19,7 @@ public class InventoryManagementDbContext : DbContext
         {
         }
     }
+
+    //Table List
+    public DbSet<Employee> Employee { get; set; }
 }

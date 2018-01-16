@@ -16,6 +16,7 @@ namespace InventoryManagement
 
         public Startup(IConfiguration configuration, ILoggerFactory loggerFactory, IHostingEnvironment env)
         {
+            this.env = env;
             _logger = loggerFactory.CreateLogger<Startup>();
             //Configuration = configuration;
             var builder = new ConfigurationBuilder()
@@ -33,7 +34,15 @@ namespace InventoryManagement
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMvc();
             //Configure Connection
+#if DEBUG
+            services.AddDbContext<InventoryManagementDbContext>(options => 
+                options.UseMySQL(Configuration.GetConnectionString("DevelopConnection"),
+                    providerOptions => providerOptions.CommandTimeout(60))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+            );
+#else
             services.AddDbContext<InventoryManagementDbContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+#endif
             // Add EntityFramework Service.
             services.AddEntityFrameworkSqlite().AddDbContext<InventoryManagementDbContext>();
         }
