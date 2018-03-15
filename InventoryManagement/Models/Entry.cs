@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,10 +8,11 @@ namespace InventoryManagement.Models
     [Table("Entry")]
     public class Entry
     {
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
 
-        [Column("CreateTime")]
-        public DateTime CreateTime { get; set; }
+        [HiddenInput(DisplayValue = false)]
+        public DateTime? CreateTime { get; set; }
         [Column("EntryDate"), Required]
         public DateTime EntryDate { get; set; }
         [Column("InitialCount"), Required]

@@ -43,8 +43,9 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="@(pageName == "Home.Index" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Index">হোম</a></li>
-                    <li class="@(pageName == "Offices.Index" ? "active" : "")"><a asp-area="" asp-controller="Offices" asp-action="Index">অফিস</a></li>
-                    <li class="@(pageName == "JobCirculars.Index" ? "active" : "")"><a asp-area="" asp-controller="JobCirculars" asp-action="Index">জব সার্কুলার</a></li>
+                    <li class="@(pageName == "ProductTypes.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductTypes" asp-action="Index">প্রোডাক্ট টাইপ</a></li>
+                    <li class="@(pageName == " ProductCategories.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductCategories" asp-action="Index">প্রোডাক্ট কেটাগরী</a></li>
+                    <li class="@(pageName == "Products.Index" ? "active" : "")"><a asp-area="" asp-controller="Products" asp-action="Index">প্রোডাক্ট</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
