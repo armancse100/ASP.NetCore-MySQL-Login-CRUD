@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace InventoryManagement
 {
@@ -78,7 +79,13 @@ namespace InventoryManagement
             {
                 var dbContext = serviceScope.ServiceProvider.GetService<InventoryManagementDbContext>();
 #if DEBUG
-                dbContext.Database.EnsureDeleted();
+                try {
+                    dbContext.Database.EnsureDeleted();
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
 #endif
                 dbContext.Database.EnsureCreatedAsync();
             }

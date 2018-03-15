@@ -30,8 +30,8 @@ namespace InventoryManagement.Controllers
                 Salary = DateTime.UtcNow.Millisecond
             };
 
-            _context.Employies.Add(employee);
-            _context.SaveChanges();
+            _context.Add(employee);
+            await _context.SaveChangesAsync();
 
             return View();
         }

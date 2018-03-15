@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManagement.Models
 {
+    [Table("Employee")]
     public class Employee
     {
         public int Id { get; set; }
