@@ -583,3 +583,4 @@ config.ps1
 # VS generated files
 launchSettings.json
 
+/InventoryManagement/wwwroot/lib
