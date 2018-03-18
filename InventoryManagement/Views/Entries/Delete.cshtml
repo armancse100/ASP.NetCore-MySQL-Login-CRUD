@@ -1,0 +1,87 @@
+﻿@model InventoryManagement.Models.Entry
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Entry</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreateTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EntryDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InitialCount)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.InitialCount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOfSupplier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameOfSupplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressOfSupplier)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AddressOfSupplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionOfProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionOfProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfSuppliedProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfSuppliedProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SuppliedProductUnitPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SuppliedProductUnitPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SuppliedProductTotalPrice)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SuppliedProductTotalPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNoOfProductAfterInserted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalNoOfProductAfterInserted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

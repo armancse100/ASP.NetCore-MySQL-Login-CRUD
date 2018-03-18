@@ -1,0 +1,66 @@
+﻿@model InventoryManagement.Models.Exit
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Exit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReceiveDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReceiveDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOfUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NameOfUser)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressOfUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AddressOfUser)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DemandnoteNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DemandnoteNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfReceivedProduct)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfReceivedProduct)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNoOfProductAfterdeduction)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TotalNoOfProductAfterdeduction)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Entry)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Entry.AddressOfSupplier)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -25,7 +25,7 @@ namespace InventoryManagement.Models
         [Column("ProductId"), Required]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual ProductCategory ProductName { get; set; }
+        public virtual Product ProductName { get; set; }
 
         [Column("DescriptionOfProduct"), Required]
         public string DescriptionOfProduct { get; set; }

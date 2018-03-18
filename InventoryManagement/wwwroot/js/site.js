@@ -1,1 +1,5 @@
-﻿// Write your JavaScript code.
+﻿$(document).ready(function () {
+    $('.DatePicker').datepicker({
+        format: "dd/mm/yyyy"
+    });
+});
