@@ -1,9 +1,7 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using InventoryManagement.Models;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace InventoryManagement.Controllers
 {
@@ -17,22 +15,6 @@ namespace InventoryManagement.Controllers
 
         public async Task<IActionResult> Index()
         {
-            Random random = new Random();
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string newString =  new string(Enumerable.Repeat(chars, 15)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-
-            Employee employee = new Employee
-            {
-                City = newString,
-                Department = newString,
-                Name = newString,
-                Salary = DateTime.UtcNow.Millisecond
-            };
-
-            _context.Add(employee);
-            await _context.SaveChangesAsync();
-
             return View();
         }
 

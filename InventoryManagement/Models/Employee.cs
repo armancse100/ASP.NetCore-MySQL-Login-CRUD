@@ -10,10 +10,10 @@ namespace InventoryManagement.Models
     {
         [HiddenInput(DisplayValue = false), Display(Name = "আই ডি")]
         public int Id { get; set; }
-        [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়")]
-        public DateTime CreateTime { get; } = DateTime.UtcNow;
-        [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়")]
-        public DateTime LastUpdateTime { get; set; } = DateTime.UtcNow;
+        [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়"), Column("CreateTime")]
+        public DateTime? CreateTime { get; } = DateTime.UtcNow;
+        [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
+        public DateTime? LastUpdateTime { get; set; } = DateTime.UtcNow;
 
         [Required, MinLength(3), MaxLength(50), Display(Name = "কর্মকর্তা/কর্মচারীর নাম", Prompt = "কর্মকর্তা/কর্মচারীর নাম লিখুন")]
         public string Name { get; set; }
