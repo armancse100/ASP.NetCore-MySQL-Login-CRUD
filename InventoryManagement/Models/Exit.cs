@@ -7,38 +7,35 @@ namespace InventoryManagement.Models
 {
     public class Exit
     {
-        [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false), Display(Name = "আই. ডি.")]
         public int Id { get; set; }
+        [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়")]
+        public DateTime CreateTime { get; } = DateTime.UtcNow;
+        [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়")]
+        public DateTime LastUpdateTime { get; set; } = DateTime.UtcNow;
 
-        [HiddenInput(DisplayValue = false)]
-        public DateTime? CreateTime { get;}
-
-        [Column("ReceiveDate"), Required]
-        public DateTime ReceiveDate { get; set; }
-        [Column("NameOfUser"), Required]
+        [Column("ReceiveDate", TypeName = "DATE"), Display(Name = "মাল গ্রহনের তারিখ", Prompt = "মাল গ্রহনের তারিখ সিলেক্ট করুন (ঐচ্ছিক )")]
+        public DateTime ReceiveDate { get; set; } = DateTime.UtcNow;
+        [Column("NameOfUser"), Required, MinLength(3), MaxLength(100), Display(Name = "গ্রহণকারীর নাম", Prompt = "গ্রহণকারীর নাম লিখুন")]
         public string NameOfUser { get; set; }
-        [Column("AddressOfUser"), Required]
+        [Column("AddressOfUser", TypeName = "TEXT"), Required, MinLength(10), MaxLength(1000), Display(Name = "গ্রহণকারীর ঠিকানা", Prompt = "গ্রহণকারীর ঠিকানা লিখুন")]
         public string AddressOfUser { get; set; }
-        [Column("DemandnoteNo"), Required]
-        public string DemandnoteNo { get; set; }
-        [Column("NumberOfReceivedProduct"), Required]
-        public int NumberOfReceivedProduct { get; set; }
-        [Column("TotalNoOfProductAfterdeduction"), Required]
-        public int TotalNoOfProductAfterdeduction { get; set; }
+        [Column("DemandnoteNo"), Required, MinLength(5), MaxLength(100), Display(Name = "চাহিদা পত্র নং", Prompt = "চাহিদা পত্র নম্বর লিখুন")]
+        public string DemandNoteNo { get; set; }
 
-        [Column("ProductId"), Required]
+        [Column("ProductId"), Required, Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম বাছাই করুন")]
         public int ProductId { get; set; }
         [ForeignKey("ProductId")]
-        public virtual ProductCategory ProductName { get; set; }
+        public virtual Product ProductName { get; set; }
 
-        [Column("EntryId"), Required]
-        public int EntryId { get; set; }
+        [Column("NumberOfReceivedProduct"), Required, Display(Name = "মালের পরিমান", Prompt = "মালের পরিমান লিখুন"), Range(UInt64.MinValue, UInt64.MaxValue)]
+        public int NumberOfReceivedProduct { get; set; }
+        [Column("TotalNoOfProductAfterdeduction"), HiddenInput(DisplayValue = false), Display(Name = "অবশিষ্ট মালের পরিমান")]
+        public int TotalNoOfProductAfterdeduction { get; set; }
+
+        [Column("EntryId"), Display(Name = "এন্ট্রি আই ডি", Prompt = "এন্ট্রি আই. ডি. সিলেক্ট করুন")]
+        public int? EntryId { get; set; }
         [ForeignKey("EntryId")]
         public virtual Entry Entry { get; set; }
-
-        public Exit()
-        {
-            CreateTime = DateTime.UtcNow;
-        }
     }
 }
