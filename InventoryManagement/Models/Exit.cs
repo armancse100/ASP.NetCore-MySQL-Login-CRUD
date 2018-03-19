@@ -23,7 +23,7 @@ namespace InventoryManagement.Models
         [Column("DemandnoteNo"), Required, MinLength(5), MaxLength(100), Display(Name = "চাহিদা পত্র নং", Prompt = "চাহিদা পত্র নম্বর লিখুন")]
         public string DemandNoteNo { get; set; }
 
-        [Column("ProductId"), Required]
+        [Column("ProductId"), Required, Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম বাছাই করুন")]
         public int ProductId { get; set; }
         [ForeignKey("ProductId"), Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম বাছাই করুন")]
         public virtual Product ProductName { get; set; }

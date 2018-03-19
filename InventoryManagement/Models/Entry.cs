@@ -24,7 +24,7 @@ namespace InventoryManagement.Models
         [Column("AddressOfSupplier", TypeName = "TEXT"), Required, MinLength(10), MaxLength(1000), Display(Name = "সরবরাহকারীর ঠিকানা", Prompt = "সরবরাহকারীর ঠিকানা লিখুন")]
         public string AddressOfSupplier { get; set; }
 
-        [Column("ProductId"), Required]
+        [Column("ProductId"), Required, Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম বাছাই করুন")]
         public int ProductId { get; set; }
         [ForeignKey("ProductId"), Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম বাছাই করুন")]
         public virtual Product ProductName { get; set; }
