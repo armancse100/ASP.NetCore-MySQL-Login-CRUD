@@ -15,17 +15,17 @@ namespace InventoryManagement.Models
         [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
         public DateTime? LastUpdateTime { get; set; } = (DateTime)DateTime.UtcNow;
 
-        [Required, MinLength(3), MaxLength(50), Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম লিখুন")]
+        [Required(ErrorMessage = "প্রোডাক্ট-এর নাম লিখতে হবে"), MinLength(3, ErrorMessage = "প্রোডাক্ট-এর নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "প্রোডাক্ট-এর নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম লিখুন")]
         public string Name { get; set; }
-        [Required, Column("CurrentStoreValue"), Display(Name = "প্রোডাক্ট-এর সংখ্যা", Prompt = "প্রোডাক্ট-এর প্রাথমিক সংখ্যা লিখুন"), Range(0, int.MaxValue)]
+        [Required(ErrorMessage = "প্রোডাক্ট-এর সংখ্যা লিখতে হবে"), Column("CurrentStoreValue"), Display(Name = "প্রোডাক্ট-এর সংখ্যা", Prompt = "প্রোডাক্ট-এর প্রাথমিক সংখ্যা লিখুন"), Range(0, int.MaxValue, ErrorMessage = "মালের সঠিক প্রারম্ভিক স্থিথি লিখুন")]
         public int CurrentStoreValue { get; set; } = 0;
 
-        [Column("ProductCategoryId"), Required, Display(Name = "প্রোডাক্ট কেটাগরী", Prompt = "প্রোডাক্ট এর কেটাগরী সিলেক্ট করুন")]
+        [Column("ProductCategoryId"), Required(ErrorMessage = "প্রোডাক্ট-এর কেটাগরী সিলেক্ট করতে হবে"), Display(Name = "প্রোডাক্ট-এর কেটাগরী", Prompt = "প্রোডাক্ট এর কেটাগরী সিলেক্ট করুন")]
         public int ProductCategoryId { get; set; }
         [ForeignKey("ProductCategoryId"), Display(Name = "প্রোডাক্ট কেটাগরী", Prompt = "প্রোডাক্ট এর কেটাগরী সিলেক্ট করুন")]
         public virtual ProductCategory ProductCategoryName { get; set; }
 
-        [Column("ProductTypeId"), Required, Display(Name = "প্রোডাক্ট টাইপ", Prompt = "প্রোডাক্ট এর টাইপ সিলেক্ট করুন")]
+        [Column("ProductTypeId"), Required(ErrorMessage = "প্রোডাক্ট-এর টাইপ সিলেক্ট হবে"), Display(Name = "প্রোডাক্ট টাইপ", Prompt = "প্রোডাক্ট এর টাইপ সিলেক্ট করুন")]
         public int ProductTypeId { get; set; }
         [ForeignKey("ProductTypeId"), Display(Name = "প্রোডাক্ট টাইপ", Prompt = "প্রোডাক্ট এর টাইপ সিলেক্ট করুন")]
         public virtual ProductType ProductTypeName { get; set; }

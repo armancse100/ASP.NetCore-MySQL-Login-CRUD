@@ -15,7 +15,7 @@ namespace InventoryManagement.Models
         [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
         public DateTime? LastUpdateTime { get; set; } = DateTime.UtcNow;
 
-        [Column("Name"), Required, MinLength(3), MaxLength(50), Display(Name = "মালের ধরন", Prompt = "কি ধরনের মাল, তা লিখুন")]
+        [Column("Name"), Required(ErrorMessage = "কি ধরনের মাল, তা লিখতে হবে"), MinLength(3, ErrorMessage = "মালের ধরন ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "মালের ধরন ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "মালের ধরন", Prompt = "কি ধরনের মাল, তা লিখুন")]
         public string Name { get; set; }
     }
 }

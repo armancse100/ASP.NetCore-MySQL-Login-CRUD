@@ -1,0 +1,83 @@
+﻿@model IEnumerable<InventoryManagement.Models.Exit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastUpdateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReceiveDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NameOfUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressOfUser)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DemandNoteNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfReceivedProduct)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalNoOfProductAfterdeduction)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entry)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastUpdateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressOfUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DemandNoteNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfReceivedProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNoOfProductAfterdeduction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entry.AddressOfSupplier)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
