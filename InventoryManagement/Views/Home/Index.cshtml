@@ -2,3 +2,28 @@
     ViewData["Title"] = "মূল পাতা";
 }
 
+<form id="myForm" class="form-signin" method="get" asp-action="Index" asp-controller="Products">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <label for="inputEmail" class="sr-only">ব্যবহারকারীর নাম</label>
+    <input type="text" id="inputUser" class="form-control" placeholder="ব্যবহারকারীর নাম লিখুন" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="পাসওয়ার্ড দিন" required>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" onclick="login()">Sign in</button>
+</form>
+
+<script type='text/javascript'>
+    function login() {
+        if ($("#inputUser").val().localeCompare("admin") == 0 && $("#inputPassword").val().localeCompare("admin") == 0) {
+            alert("Successfully Logged In !");
+            $('form#myForm').submit();
+        }
+        else {
+            alert("Wrong user Name or Password");
+        }
+    }
+</script>

@@ -1,95 +1,90 @@
 ﻿@model InventoryManagement.Models.Entry
-
 @{
     ViewData["Title"] = "মালের এন্ট্রি";
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <form asp-action="Create" method="post" class="form-horizontal">
-            <fieldset class="fieldset-bordered">
-                <legend class="legend-bordered">নতুন মাল এন্ট্রি করুন</legend>
+<form asp-action="Create" method="post" class="form-horizontal">
+    <fieldset class="fieldset-bordered">
+        <legend class="legend-bordered">নতুন মাল এন্ট্রি করুন</legend>
 
-                <div asp-validation-summary="All" class="text-danger"></div>
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="EntryDate" class="control-label col-xs-4 vertical-middle"></label>
-                            <div class="col-xs-8">
-                                <input asp-for="EntryDate" type="text" class="form-control DatePicker" required />
-                                <span asp-validation-for="EntryDate" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="NameOfSupplier" class="control-label col-xs-4 vertical-middle"></label>
-                            <div class="col-xs-8">
-                                <input asp-for="NameOfSupplier" class="form-control" required />
-                                <span asp-validation-for="NameOfSupplier" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label asp-for="AddressOfSupplier" class="control-label col-xs-2 vertical-middle"></label>
-                            <div class="col-xs-10">
-                                <textarea asp-for="AddressOfSupplier" class="form-control" rows="5"></textarea>
-                                <span asp-validation-for="AddressOfSupplier" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="ProductId" class="control-label col-xs-4 vertical-middle"></label>
-                            <div class="col-xs-8">
-                                <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
-                                <span asp-validation-for="ProductId" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="DescriptionOfProduct" class="control-label col-xs-2 vertical-middle"></label>
-                            <div class="col-xs-10">
-                                <textarea asp-for="DescriptionOfProduct" class="form-control" rows="5"></textarea>
-                                <span asp-validation-for="DescriptionOfProduct" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="NumberOfSuppliedProduct" class="control-label col-xs-4 vertical-middle"></label>
-                            <div class="col-xs-8">
-                                <input asp-for="NumberOfSuppliedProduct" class="form-control" />
-                                <span asp-validation-for="NumberOfSuppliedProduct" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label asp-for="SuppliedProductUnitPrice" class="control-label col-xs-4 vertical-middle"></label>
-                            <div class="col-xs-8">
-                                <input asp-for="SuppliedProductUnitPrice" class="form-control" />
-                                <span asp-validation-for="SuppliedProductUnitPrice" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+        <div class="row">
+            <div class="col-md-6">
                 <div class="form-group">
-                    <div class="col-xs-offset-4 col-xs-4">
-                        <button type="submit" value="Create" class="btn btn-primary btn-block">এন্ট্রি যোগ করুন</button>
+                    <label asp-for="EntryDate" class="control-label col-xs-4 vertical-middle"></label>
+                    <div class="col-xs-8">
+                        <input asp-for="EntryDate" type="text" class="form-control DatePicker" required />
+                        <span asp-validation-for="EntryDate" class="text-danger"></span>
                     </div>
                 </div>
-            </fieldset>
-        </form>
-    </div>
-</div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NameOfSupplier" class="control-label col-xs-4 vertical-middle"></label>
+                    <div class="col-xs-8">
+                        <input asp-for="NameOfSupplier" class="form-control" required />
+                        <span asp-validation-for="NameOfSupplier" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="AddressOfSupplier" class="control-label col-xs-2 vertical-middle"></label>
+                    <div class="col-xs-10">
+                        <textarea asp-for="AddressOfSupplier" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="AddressOfSupplier" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ProductId" class="control-label col-xs-4 vertical-middle"></label>
+                    <div class="col-xs-8">
+                        <select asp-for="ProductId" class="form-control" asp-items="ViewBag.ProductId"></select>
+                        <span asp-validation-for="ProductId" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="DescriptionOfProduct" class="control-label col-xs-2 vertical-middle"></label>
+                    <div class="col-xs-10">
+                        <textarea asp-for="DescriptionOfProduct" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="DescriptionOfProduct" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="NumberOfSuppliedProduct" class="control-label col-xs-4 vertical-middle"></label>
+                    <div class="col-xs-8">
+                        <input asp-for="NumberOfSuppliedProduct" class="form-control" />
+                        <span asp-validation-for="NumberOfSuppliedProduct" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="SuppliedProductUnitPrice" class="control-label col-xs-4 vertical-middle"></label>
+                    <div class="col-xs-8">
+                        <input asp-for="SuppliedProductUnitPrice" class="form-control" />
+                        <span asp-validation-for="SuppliedProductUnitPrice" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-4 col-xs-4">
+                <button type="submit" value="Create" class="btn btn-primary btn-block">এন্ট্রি যোগ করুন</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>

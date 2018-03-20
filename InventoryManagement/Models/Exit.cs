@@ -10,7 +10,7 @@ namespace InventoryManagement.Models
         [HiddenInput(DisplayValue = false), Display(Name = "আই. ডি.")]
         public int Id { get; set; }
         [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়"), Column("CreateTime")]
-        public DateTime? CreateTime { get; } = DateTime.UtcNow;
+        public DateTime? CreateTime { get; set; } = DateTime.UtcNow;
         [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
         public DateTime? LastUpdateTime { get; set; } = DateTime.UtcNow;
 
@@ -30,12 +30,12 @@ namespace InventoryManagement.Models
 
         [Column("NumberOfReceivedProduct"), Required(ErrorMessage = "মালের পরিমান লিখতে হবে"), Display(Name = "মালের পরিমান", Prompt = "মালের পরিমান লিখুন"), Range(int.MinValue, int.MaxValue, ErrorMessage = "মালের সঠিক পরিমান লিখুন")]
         public int NumberOfReceivedProduct { get; set; }
-        [Column("TotalNoOfProductAfterdeduction"), HiddenInput(DisplayValue = false), Display(Name = "অবশিষ্ট মালের পরিমান"), Range(0, int.MaxValue)]
+        [Column("TotalNoOfProductAfterdeduction"), Display(Name = "অবশিষ্ট মালের পরিমান"), Range(0, int.MaxValue)]
         public int TotalNoOfProductAfterdeduction { get; set; }
 
-        [Column("EntryId"), Display(Name = "এন্ট্রি আই ডি", Prompt = "এন্ট্রি আই. ডি. সিলেক্ট করুন")]
+        [Column("EntryId"), Display(Name = "এন্ট্রি আইডি রেফেরান্স (অপসনাল)", Prompt = "এন্ট্রি আই.ডি. সিলেক্ট করুন")]
         public int? EntryId { get; set; }
-        [ForeignKey("EntryId"), Display(Name = "এন্ট্রি আই ডি", Prompt = "এন্ট্রি আই. ডি. সিলেক্ট করুন")]
+        [ForeignKey("EntryId"), Display(Name = "এন্ট্রি আইডি রেফেরান্স (অপসনাল)", Prompt = "এন্ট্রি আই.ডি. সিলেক্ট করুন")]
         public virtual Entry Entry { get; set; }
     }
 }

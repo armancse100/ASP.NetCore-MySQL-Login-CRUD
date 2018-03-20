@@ -56,13 +56,20 @@ namespace InventoryManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,LastUpdateTime,ReceiveDate,NameOfUser,AddressOfUser,DemandNoteNo,ProductId,NumberOfReceivedProduct,TotalNoOfProductAfterdeduction,EntryId")] Exit exit)
+        public async Task<IActionResult> Create([Bind("Id,ReceiveDate,NameOfUser,AddressOfUser,DemandNoteNo,ProductId,NumberOfReceivedProduct,TotalNoOfProductAfterdeduction,EntryId")] Exit exit)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(exit);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                Product product = _context.Products.SingleOrDefault(p => p.Id == exit.ProductId);
+                if(product.CurrentStoreValue >= exit.NumberOfReceivedProduct)
+                {
+                    product.CurrentStoreValue -= exit.NumberOfReceivedProduct;
+                    _context.Products.Update(product);
+                    exit.TotalNoOfProductAfterdeduction = product.CurrentStoreValue;
+                    _context.Exits.Add(exit);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             ViewData["EntryId"] = new SelectList(_context.Entries, "Id", "AddressOfSupplier", exit.EntryId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", exit.ProductId);
@@ -92,7 +99,7 @@ namespace InventoryManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,LastUpdateTime,ReceiveDate,NameOfUser,AddressOfUser,DemandNoteNo,ProductId,NumberOfReceivedProduct,TotalNoOfProductAfterdeduction,EntryId")] Exit exit)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ReceiveDate,NameOfUser,AddressOfUser,DemandNoteNo,ProductId,NumberOfReceivedProduct,TotalNoOfProductAfterdeduction,EntryId")] Exit exit)
         {
             if (id != exit.Id)
             {

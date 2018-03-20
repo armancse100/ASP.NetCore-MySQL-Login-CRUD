@@ -58,7 +58,11 @@ namespace InventoryManagement.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(entry);
+                Product product = _context.Products.SingleOrDefault(p => p.Id == entry.ProductId);
+                entry.InitialCount = product.CurrentStoreValue;
+                product.CurrentStoreValue += entry.NumberOfSuppliedProduct;
+                _context.Products.Update(product);
+                _context.Entries.Add(entry);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

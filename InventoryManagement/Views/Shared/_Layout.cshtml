@@ -43,15 +43,21 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="@(pageName == "Home.Index" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Index">হোম</a></li>
-                    <li class="@(pageName == "ProductTypes.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductTypes" asp-action="Index">প্রোডাক্ট টাইপ</a></li>
-                    <li class="@(pageName == "ProductCategories.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductCategories" asp-action="Index">প্রোডাক্ট কেটাগরী</a></li>
-                    <li class="@(pageName == "Products.Index" ? "active" : "")"><a asp-area="" asp-controller="Products" asp-action="Index">প্রোডাক্ট</a></li>
+                    @if (pageName != "Home.Index")
+                    {
+                        <li class="@(pageName == "ProductTypes.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductTypes" asp-action="Index">পন্যের ধরন</a></li>
+                        <li class="@(pageName == "ProductCategories.Index" ? "active" : "" )"><a asp-area="" asp-controller="ProductCategories" asp-action="Index">পন্যের ক্যাটাগরি</a></li>
+                        <li class="@(pageName == "Products.Index" ? "active" : "")"><a asp-area="" asp-controller="Products" asp-action="Index">মালামাল সমূহ</a></li>
 
-                    <li class="@(pageName == "Entries.Index" ? "active" : "")"><a asp-area="" asp-controller="Entries" asp-action="Index">প্রোডাক্ট এন্ট্রি</a></li>
-                    <li class="@(pageName == "Exits.Index" ? "active" : "")"><a asp-area="" asp-controller="Exits" asp-action="Index">প্রোডাক্ট বাহির</a></li>
+                        <li class="@(pageName == "Entries.Index" ? "active" : "")"><a asp-area="" asp-controller="Entries" asp-action="Index">মালামালের এন্ট্রি</a></li>
+                        <li class="@(pageName == "Exits.Index" ? "active" : "")"><a asp-area="" asp-controller="Exits" asp-action="Index">পণ্য হস্তান্তর</a></li>
+                    }
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="@(pageName == " Employees.Index" ? "active" : "" )"><a asp-area="" asp-controller="Employees" asp-action="Index">কর্মচারী</a></li>
+                    @if (pageName != "Home.Index")
+                    {
+                        <li class="@(pageName == " Employees.Index" ? "active" : "" )"><a asp-area="" asp-controller="Employees" asp-action="Index">কর্মচারী</a></li>
+                    }
                     <li class="@(pageName == "Home.About" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li class="@(pageName == "Home.Contact" ? "active" : "")"><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>

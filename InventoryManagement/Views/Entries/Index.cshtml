@@ -23,6 +23,9 @@
                 @Html.DisplayNameFor(model => model.DescriptionOfProduct)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.InitialCount)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.NumberOfSuppliedProduct)
             </th>
             <th>
@@ -31,15 +34,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastUpdateTime)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
-    {
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.EntryDate)
@@ -54,6 +54,9 @@
                 @Html.DisplayFor(modelItem => item.DescriptionOfProduct)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.InitialCount)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.NumberOfSuppliedProduct)
             </td>
             <td>
@@ -63,14 +66,11 @@
                 @Html.DisplayFor(modelItem => item.ProductName.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastUpdateTime)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
