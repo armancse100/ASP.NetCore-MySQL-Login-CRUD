@@ -1,7 +1,10 @@
 ﻿using InventoryManagement.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
-public class InventoryManagementDbContext : DbContext
+public class InventoryManagementDbContext : IdentityDbContext<User, Role, int>
+//public class InventoryManagementDbContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, UserToken>
 {
     //Table List
     public DbSet<Employee> Employies { get; set; }
@@ -10,6 +13,8 @@ public class InventoryManagementDbContext : DbContext
     public DbSet<Product> Products { get; set; }
     public DbSet<Entry> Entries { get; set; }
     public DbSet<Exit> Exits { get; set; }
+    /*public DbSet<User> Uses { get; set; }
+    public DbSet<Role> Roles { get; set; }*/
     //Table List End
 
     public InventoryManagementDbContext(DbContextOptions<InventoryManagementDbContext> options)
@@ -19,30 +24,14 @@ public class InventoryManagementDbContext : DbContext
     //Fluent API to make Composite Key
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         //Key automatic generation configuration
+        /*
         modelBuilder.Entity<Employee>()
-            .Property(b => b.Id)
+            .Property(e => e.Id)
             .ValueGeneratedOnAdd();
-
-        modelBuilder.Entity<ProductCategory>()
-            .Property(b => b.Id)
-            .ValueGeneratedOnAdd();
-
-        modelBuilder.Entity<ProductType>()
-            .Property(b => b.Id)
-            .ValueGeneratedOnAdd();
-
-        modelBuilder.Entity<Product>()
-            .Property(b => b.Id)
-            .ValueGeneratedOnAdd();
-
-        modelBuilder.Entity<Entry>()
-            .Property(b => b.Id)
-            .ValueGeneratedOnAdd();
-
-        modelBuilder.Entity<Exit>()
-            .Property(b => b.Id)
-            .ValueGeneratedOnAdd();
+        */
 
         /*-------------------------------------------*/
 

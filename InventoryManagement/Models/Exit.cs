@@ -1,19 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManagement.Models
 {
-    public class Exit
+    public class Exit : BaseModel
     {
-        [HiddenInput(DisplayValue = false), Display(Name = "আই. ডি.")]
-        public int Id { get; set; }
-        [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়"), Column("CreateTime")]
-        public DateTime? CreateTime { get; set; } = DateTime.UtcNow;
-        [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
-        public DateTime? LastUpdateTime { get; set; } = DateTime.UtcNow;
-
         [Column("ReceiveDate", TypeName = "DATE"), Required(ErrorMessage = "মাল গ্রহনের তারিখ সিলেক্ট করতে হবে"), Display(Name = "মাল গ্রহনের তারিখ", Prompt = "মাল গ্রহনের তারিখ সিলেক্ট করুন")]
         public DateTime ReceiveDate { get; set; } = DateTime.UtcNow;
         [Column("NameOfUser"), Required(ErrorMessage = "গ্রহণকারীর নাম লিখতে হবে"), MinLength(3), MaxLength(100), Display(Name = "গ্রহণকারীর নাম", Prompt = "গ্রহণকারীর নাম লিখুন")]

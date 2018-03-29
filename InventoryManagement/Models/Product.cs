@@ -1,20 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InventoryManagement.Models
 {
     [Table("Product")]
-    public class Product
+    public class Product : BaseModel
     {
-        [HiddenInput(DisplayValue = false), Display(Name = "আই ডি")]
-        public int Id { get; set; }
-        [HiddenInput(DisplayValue = false), Display(Name = "প্রথম এন্ট্রির সময়"), Column("CreateTime")]
-        public DateTime? CreateTime { get; } = (DateTime)DateTime.UtcNow;
-        [HiddenInput(DisplayValue = false), Display(Name = "শেষ হালনাগাদের সময়"), Column("LastUpdateTime")]
-        public DateTime? LastUpdateTime { get; set; } = (DateTime)DateTime.UtcNow;
-
         [Required(ErrorMessage = "প্রোডাক্ট-এর নাম লিখতে হবে"), MinLength(3, ErrorMessage = "প্রোডাক্ট-এর নাম ৩ অক্ষরের বড় হতে হবে"), MaxLength(50, ErrorMessage = "প্রোডাক্ট-এর নাম ৫০ অক্ষরের ছোট হতে হবে"), Display(Name = "প্রোডাক্ট-এর নাম", Prompt = "প্রোডাক্ট-এর নাম লিখুন")]
         public string Name { get; set; }
         [Required(ErrorMessage = "প্রোডাক্ট-এর সংখ্যা লিখতে হবে"), Column("CurrentStoreValue"), Display(Name = "প্রোডাক্ট-এর সংখ্যা", Prompt = "প্রোডাক্ট-এর প্রাথমিক সংখ্যা লিখুন"), Range(0, int.MaxValue, ErrorMessage = "মালের সঠিক প্রারম্ভিক স্থিথি লিখুন")]

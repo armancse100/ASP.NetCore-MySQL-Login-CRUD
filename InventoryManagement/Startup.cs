@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,6 +47,16 @@ namespace InventoryManagement
 #endif
             // Add EntityFramework Service.
             services.AddEntityFrameworkSqlite().AddDbContext<InventoryManagementDbContext>();
+            //Add Identity service
+            services.AddIdentity<User, Role>(options => {
+                options.Password.RequireDigit = false;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+            })
+            .AddEntityFrameworkStores<InventoryManagementDbContext>()
+            .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +76,7 @@ namespace InventoryManagement
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();    //Add Identity
 
             app.UseMvc(routes =>
             {
