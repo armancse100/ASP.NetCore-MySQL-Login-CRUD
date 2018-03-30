@@ -1,7 +1,6 @@
-﻿using InventoryManagement.Models;
+﻿using InventoryManagement.DbModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore.Extensions;
 
 public class InventoryManagementDbContext : IdentityDbContext<User, Role, int>
 //public class InventoryManagementDbContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, UserToken>
@@ -13,8 +12,6 @@ public class InventoryManagementDbContext : IdentityDbContext<User, Role, int>
     public DbSet<Product> Products { get; set; }
     public DbSet<Entry> Entries { get; set; }
     public DbSet<Exit> Exits { get; set; }
-    /*public DbSet<User> Uses { get; set; }
-    public DbSet<Role> Roles { get; set; }*/
     //Table List End
 
     public InventoryManagementDbContext(DbContextOptions<InventoryManagementDbContext> options)
@@ -32,8 +29,6 @@ public class InventoryManagementDbContext : IdentityDbContext<User, Role, int>
             .Property(e => e.Id)
             .ValueGeneratedOnAdd();
         */
-
-        /*-------------------------------------------*/
 
         //many to many relation configuration
         /*

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using InventoryManagement.Models;
+using InventoryManagement.DbModels;
 
 namespace InventoryManagement.Controllers
 {

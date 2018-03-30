@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InventoryManagement.Models
+namespace InventoryManagement.DbModels
 {
     public class Exit : BaseModel
     {

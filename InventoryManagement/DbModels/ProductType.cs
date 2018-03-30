@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace InventoryManagement.Models
+namespace InventoryManagement.DbModels
 {
     [Table("ProductType")]
     public class ProductType : BaseModel

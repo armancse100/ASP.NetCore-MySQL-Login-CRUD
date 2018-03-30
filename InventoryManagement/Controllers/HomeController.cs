@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using InventoryManagement.Models;
+using InventoryManagement.DbModels;
 using System.Threading.Tasks;
 
 namespace InventoryManagement.Controllers
