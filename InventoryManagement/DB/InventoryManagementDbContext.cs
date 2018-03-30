@@ -23,6 +23,13 @@ public class InventoryManagementDbContext : IdentityDbContext<User, Role, int>
     {
         base.OnModelCreating(modelBuilder);
 
+        // email address doesn't need to be in unicode, check it spec
+        modelBuilder.Entity<User>().Property(u => u.Id).HasMaxLength(10);
+        modelBuilder.Entity<User>().Property(u => u.UserName).IsUnicode(false);
+        modelBuilder.Entity<User>().Property(u => u.Email).IsUnicode(false);
+        modelBuilder.Entity<Role>().Property(u => u.Id).HasMaxLength(10);
+        modelBuilder.Entity<Role>().Property(r => r.Name).HasMaxLength(255);
+
         //Key automatic generation configuration
         /*
         modelBuilder.Entity<Employee>()
